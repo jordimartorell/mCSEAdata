@@ -1,0 +1,119 @@
+---
+title: "Data for mCSEA package"
+author:
+- name: Jordi Martorell-Marugán
+  affiliation:
+  - Bioinformatics Unit. GENYO, Centre for Genomics and Oncological Research
+- name: Pedro Carmona-Sáez
+  affiliation:
+  - Bioinformatics Unit. GENYO, Centre for Genomics and Oncological Research
+  email: pedro.carmona@genyo.es
+package: mCSEAdata
+date: "`r doc_date()`"
+abstract: >
+  _mCSEAdata_ package contains the necessary files to run the core analysis in 
+  _mCSEA_ package. It also contains example data used by _mCSEA_ to show it's 
+  functionality.
+output:
+  BiocStyle::pdf_document
+vignette: >
+  %\VignetteIndexEntry{Data for mCSEA package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+references:
+- id: hansen2016a
+  title: "IlluminaHumanMethylation450kanno.ilmn12.hg19: Annotation for 
+Illumina's 450k methylation arrays"
+  author:
+  - family: Hansen
+    given: KD
+  container-title: R package version 0.6.0
+  issued:
+    year: 2016
+- id: hansen2016b
+  title: "IlluminaHumanMethylationEPICanno.ilm10b2.hg19: Annotation for 
+Illumina's EPIC methylation arrays"
+  author:
+  - family: Hansen
+    given: KD
+  container-title: R package version 0.6.0
+  issued:
+    year: 2016
+---
+
+
+# Package contents
+
+```{r}
+library(mCSEAdata)
+data(mcseadata)
+```
+
+Firstly, **betaTest** and **phenoTest** are the objects necessary to run the 
+examples in _mCSEA_ package. **betaTest** is a matrix with the beta-values 
+of 10000 EPIC probes for 20 samples. **phenoTest** is a dataframe with the 
+explanatory variable and covariates associated to the samples.
+
+```{r}
+class(betaTest)
+dim(betaTest)
+head(betaTest, 3)
+class(phenoTest)
+dim(phenoTest)
+head(phenoTest, 3)
+```
+
+
+On the other hand, there are 6 association objects. Each one is a list of 
+features with their associated 450k or EPIC CpG probes. The features included 
+are promoters (**assocPromoters450k** and **assocPromotersEPIC**), gene bodies 
+(**assocGenes450k** and **assocGenesEPIC**) and CpG islands (**assocCGI450k** 
+and **assocCGIEPIC**). These objects are internally used by _mCSEA.test_ 
+function in _mCSEA_ package.
+
+```{r}
+class(assocPromoters450k)
+length(assocPromoters450k)
+head(assocPromoters450k, 3)
+class(assocGenes450k)
+length(assocGenes450k)
+head(assocGenes450k, 3)
+class(assocCGI450k)
+length(assocCGI450k)
+head(assocCGI450k, 3)
+class(assocPromotersEPIC)
+length(assocPromotersEPIC)
+head(assocPromotersEPIC, 3)
+class(assocGenesEPIC)
+length(assocGenesEPIC)
+head(assocGenesEPIC, 3)
+class(assocCGIEPIC)
+length(assocCGIEPIC)
+head(assocCGIEPIC, 3)
+```
+
+
+
+# Sources
+* Example objects:
+    + **betaTest** contains simulated beta-values for EPIC platform probes.
+    + **phenoTest** contains arbitrary phenotypes for each sample.
+    
+* Association objects: They were all constructed from 
+`r Biocpkg("IlluminaHumanMethylation450kanno.ilmn12.hg19")` [@hansen2016a] and 
+`r Biocpkg("IlluminaHumanMethylationEPICanno.ilm10b2.hg19")` [@hansen2016b] 
+packages annotation data. 
+    + **assocPromoters450k** and **assocPromotersEPIC**: A probe was 
+considered to be in a promoter if the _UCSC_RefGene_Group_ column value 
+is _TSS1500_, _TSS200_, _5'UTR_ or _1stExon_.
+    + **assocGenes450k** and **assocGenesEPIC**: A probe was considered 
+to be in a gene body if the _UCSC_RefGene_Group_ column value is _Body_.
+    + **assocCGI450k** and **assocCGIEPIC**: A probe was considered to be 
+in a CpG island if the _Relation_to_Island_ column is _Island_.
+
+# Session info
+```{r sessionInfo, echo=FALSE}
+sessionInfo()
+```
+
+# References
