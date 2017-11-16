@@ -6,7 +6,7 @@ Author: Jordi Martorell Marugán
 Maintainer: Jordi Martorell Marugán <jmartorellm@gmail.com>
 Description: Data objects necessary to some mCSEA package functions.
     There are also example data objects to illustrate mCSEA package functionality.
-Depends: R (>= 3.4.1)
+Depends: R (>= 3.5)
 Suggests: BiocStyle, knitr, rmarkdown
 VignetteBuilder: knitr
 biocViews: Homo_sapiens_Data, MethylationArrayData, MicroarrayData, ExperimentData
