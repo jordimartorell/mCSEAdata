@@ -39,6 +39,30 @@ Illumina's EPIC methylation arrays"
   container-title: R package version 0.6.0
   issued:
     year: 2016
+- id: aryee2014
+  title: "Minfi: A flexible and comprehensive Bioconductor package for the 
+analysis of Infinium DNA Methylation microarrays."
+  author:
+  - family: Aryee
+    given: MJ
+  - family: Jaffe
+    given: AE
+  - family: Corrada-Bravo
+    given: H
+  - family: Ladd-Acosta
+    given: C
+  - family: Feinberg
+    given: AP
+  - family: Hansen
+    given: KD
+  - family: Irizarry
+    given: RA
+  container-title: Bioinformatics
+  issued:
+    year: 2014
+  volume: 30
+  issue: 10
+
 ---
 
 
@@ -102,14 +126,29 @@ head(assocCGIEPIC, 3)
 * Association objects: They were all constructed from 
 `r Biocpkg("IlluminaHumanMethylation450kanno.ilmn12.hg19")` [@hansen2016a] and 
 `r Biocpkg("IlluminaHumanMethylationEPICanno.ilm10b2.hg19")` [@hansen2016b] 
-packages annotation data. 
-    + **assocPromoters450k** and **assocPromotersEPIC**: A probe was 
-considered to be in a promoter if the _UCSC_RefGene_Group_ column value 
-is _TSS1500_, _TSS200_, _5'UTR_ or _1stExon_.
-    + **assocGenes450k** and **assocGenesEPIC**: A probe was considered 
-to be in a gene body if the _UCSC_RefGene_Group_ column value is _Body_.
-    + **assocCGI450k** and **assocCGIEPIC**: A probe was considered to be 
-in a CpG island if the _Relation_to_Island_ column is _Island_.
+packages annotation data. For that purpose, a _RGChannelSet_ object was
+obtained with `r Biocpkg("minfi")` [@aryee2014] package and _getAnnotation()_ function 
+was applied to such object in order to get the annotation DataFrame. That was 
+done for both 450k and EPIC platforms. The annotation DataFrame contains 
+several information about each CpG probe, and we used that information to 
+associate each probe to one or more promoter, gene body or CpG Island 
+following this scheme:
+
+Region type | mCSEAdata association objects | Column from association DataFrame used | Column values | Feature name column
+----------- | ----------------------------- | -------------------------------------- | ------------- | -------------------
+Promoters | assocPromoters450k and assocPromotersEPIC | UCSC_RefGene_Group | TSS1500, TSS200, 5'UTR or 1stExon | UCSC_RefGene_Name
+Gene bodies | assocGenes450k and assocGenesEPIC | UCSC_RefGene_Group | Body | UCSC_RefGene_Name
+CpG Islands | assocCGI450k and assocCGIEPIC | Relation_to_Island | Island | Islands_Name
+
+For instance, _cg00212031_ probe from 450k platform has the following 
+annotation data in the association DataFrame:
+
+UCSC_RefGene_Group | UCSC_RefGene_Name | Relation_to_Island | Islands_Name
+------------------ | ----------------- | ------------------ | ------------
+TSS200 | TTTY14 | Island | chrY:21238448-21240005
+
+So this probe is associated to TTTY14 promoter in assocPromoters450k object 
+and to chrY:21238448-21240005 CpG Island in assocCGI450k object.
 
 # Session info
 ```{r sessionInfo, echo=FALSE}
