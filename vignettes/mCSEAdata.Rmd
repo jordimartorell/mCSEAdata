@@ -138,7 +138,7 @@ Region type | mCSEAdata association objects | Column from association DataFrame 
 ----------- | ----------------------------- | -------------------------------------- | ------------- | -------------------
 Promoters | assocPromoters450k and assocPromotersEPIC | UCSC_RefGene_Group | TSS1500, TSS200, 5'UTR or 1stExon | UCSC_RefGene_Name
 Gene bodies | assocGenes450k and assocGenesEPIC | UCSC_RefGene_Group | Body | UCSC_RefGene_Name
-CpG Islands | assocCGI450k and assocCGIEPIC | Relation_to_Island | Island | Islands_Name
+CpG Islands | assocCGI450k and assocCGIEPIC | Relation_to_Island | Island, N_Shore, S_Shore, N_Shelf or S_Shelf | Islands_Name
 
 For instance, _cg00212031_ probe from 450k platform has the following 
 annotation data in the association DataFrame:

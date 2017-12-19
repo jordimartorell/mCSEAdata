@@ -1,20 +1,16 @@
-Package: mCSEA
+Package: mCSEAdata
 Type: Package
-Title: Methylated CpGs Set Enrichment Analysis
-Version: 0.99.7
+Title: Data package for mCSEA package
+Version: 0.99.3
 Author: Jordi Martorell Marugán
 Maintainer: Jordi Martorell Marugán <jmartorellm@gmail.com>
-Description: Identification of diferentially methylated regions (DMRs) in predefined regions
-    (promoters, CpG islands...) from the human genome using Illumina's 450K or EPIC microarray data.
-    Provides methods to rank CpG probes based on linear models and includes plotting functions.
-Depends: R (>= 3.5), mCSEAdata
-Suggests: BiocStyle, knitr, rmarkdown, RUnit, BiocGenerics
-Imports: limma, fgsea, Gviz, ggplot2, minfi, grDevices, stats, GenomicRanges, SummarizedExperiment, utils
+Description: Data objects necessary to some mCSEA package functions.
+    There are also example data objects to illustrate mCSEA package functionality.
+Depends: R (>= 3.5)
+Suggests: BiocStyle, knitr, rmarkdown
 VignetteBuilder: knitr
-biocViews: DifferentialMethylation, Microarray,
-        MethylationArray, Genetics,
-        GenomeAnnotation, DNAMethylation, TwoChannel,
-        MultipleComparison
+biocViews: Homo_sapiens_Data, MethylationArrayData, MicroarrayData, ExperimentData
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
+
