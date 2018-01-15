@@ -71,6 +71,7 @@ analysis of Infinium DNA Methylation microarrays."
 ```{r}
 library(mCSEAdata)
 data(mcseadata)
+data(bandTable)
 ```
 
 Firstly, **betaTest** and **phenoTest** are the objects necessary to run the 
@@ -116,7 +117,13 @@ length(assocCGIEPIC)
 head(assocCGIEPIC, 3)
 ```
 
+Finally, **bandTable** object contains chromosomes band information and 
+centromer location. It is used by mCSEAPlot() function to plot the chromosome 
+track.
 
+```{r}
+head(bandTable)
+```
 
 # Sources
 * Example objects:
@@ -149,6 +156,10 @@ TSS200 | TTTY14 | Island | chrY:21238448-21240005
 
 So this probe is associated to TTTY14 promoter in assocPromoters450k object 
 and to chrY:21238448-21240005 CpG Island in assocCGI450k object.
+
+* bandTable: It was constructed with `r Biocpkg("Gviz")` package, concretely 
+with _IdeogramTrack()_ function.
+
 
 # Session info
 ```{r sessionInfo, echo=FALSE}

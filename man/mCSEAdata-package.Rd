@@ -8,7 +8,8 @@
 \description{
     Association files between Illumina's 450K and EPIC microarrays
     probes and promoters, CpG Islands and gene bodies. There are also
-    sample data from EPIC platform to test mCSEA functions.
+    sample data from EPIC platform to test mCSEA functions and a 
+    necessary object for mCSEAPlot function.
 }
 \author{
 Jordi Martorell Marugán
@@ -18,6 +19,7 @@ Maintainer: Jordi Martorell Marugán<jordi.martorell@genyo.es>
 
 \examples{
 data(mcseadata)
+data(bandTable)
 }
 
 \keyword{datasets}
