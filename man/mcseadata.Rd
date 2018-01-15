@@ -6,24 +6,31 @@
 \alias{assocGenesEPIC}
 \alias{assocCGI450k}
 \alias{assocCGIEPIC}
+\alias{annot450K}
+\alias{annotEPIC}
 \alias{betaTest}
 \alias{phenoTest}
+\alias{exprTest}
 \docType{data}
 \title{Data and examples for mCSEA package}
 \description{
     Association files between Illumina's 450K and EPIC microarrays
     probes and promoters, CpG Islands and gene bodies. There are also
-    sample data from EPIC platform to test mCSEA functions.
+    sample data from EPIC platform to test mCSEA functions and annotation 
+    for 450K and EPIC probes.
 }
 \usage{data(mcseadata)}
 \format{
-    matrix (\code{betaTest}), data.frame (\code{phenoTest}) and 
-    list (\code{assocPromoters450k}, \code{assocPromotersEPIC}, 
-    \code{assocGenes450k}, \code{assocGenesEPIC}, \code{assocCGI450k} 
-    and \code{assocCGIEPIC}) 
+    matrix (\code{betaTest} and \code{exprTest}), data.frame 
+    (\code{phenoTest}), list (\code{assocPromoters450k}, 
+    \code{assocPromotersEPIC}, \code{assocGenes450k}, \code{assocGenesEPIC}, 
+    \code{assocCGI450k} and \code{assocCGIEPIC}) and GRanges (\code{annot450K} 
+    and \code{annotEPIC})
 }
 \source{
     \code{betaTest} and \code{phenoTest} are simulated data.
+    \code{exprTest} was obtained from leukemiasEset package.
+    \code{annot450K} and \code{annotEPIC} were constructed with minfi package.
     \code{assocPromoters450k}, \code{assocPromotersEPIC}, 
     \code{assocGenes450k}, \code{assocGenesEPIC}, \code{assocCGI450k} and 
     \code{assocCGIEPIC} were constructed from

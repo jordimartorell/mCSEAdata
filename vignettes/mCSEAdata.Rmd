@@ -74,9 +74,12 @@ data(mcseadata)
 data(bandTable)
 ```
 
-Firstly, **betaTest** and **phenoTest** are the objects necessary to run the 
+Firstly, **betaTest**, **phenoTest** and **exprTest** are the objects necessary 
+to run the 
 examples in _mCSEA_ package. **betaTest** is a matrix with the beta-values 
-of 10000 EPIC probes for 20 samples. **phenoTest** is a dataframe with the 
+of 10000 EPIC probes for 20 samples. **exprTest** is a subset of 100 genes' 
+expression from bone marrows of 10 healthy and 10 leukemia patients. 
+**phenoTest** is a dataframe with the 
 explanatory variable and covariates associated to the samples.
 
 ```{r}
@@ -86,7 +89,12 @@ head(betaTest, 3)
 class(phenoTest)
 dim(phenoTest)
 head(phenoTest, 3)
+class(exprTest)
+dim(exprTest)
+head(exprTest, 3)
 ```
+
+
 
 
 On the other hand, there are 6 association objects. Each one is a list of 
@@ -117,6 +125,16 @@ length(assocCGIEPIC)
 head(assocCGIEPIC, 3)
 ```
 
+
+There are also 2 GRanges objects with the locations of 450K and EPIC probes, 
+used by _mCSEAPlot()_ and _mCSEAIntegrate()_ functions:
+```{r, message = FALSE}
+class(annot450K)
+head(annot450K, 3)
+class(annotEPIC)
+head(annotEPIC, 3)
+```
+
 Finally, **bandTable** object contains chromosomes band information and 
 centromer location. It is used by mCSEAPlot() function to plot the chromosome 
 track.
@@ -128,13 +146,16 @@ head(bandTable)
 # Sources
 * Example objects:
     + **betaTest** contains simulated beta-values for EPIC platform probes.
+    + **exprTest** contains expression data from Leukemia and healthy patients 
+extracted from `r Biocpkg("leukemiaEset")` package.
     + **phenoTest** contains arbitrary phenotypes for each sample.
     
 * Association objects: They were all constructed from 
 `r Biocpkg("IlluminaHumanMethylation450kanno.ilmn12.hg19")` [@hansen2016a] and 
 `r Biocpkg("IlluminaHumanMethylationEPICanno.ilm10b2.hg19")` [@hansen2016b] 
 packages annotation data. For that purpose, a _RGChannelSet_ object was
-obtained with `r Biocpkg("minfi")` [@aryee2014] package and _getAnnotation()_ function 
+obtained with `r Biocpkg("minfi")` [@aryee2014] package and 
+_getAnnotation()_ function 
 was applied to such object in order to get the annotation DataFrame. That was 
 done for both 450k and EPIC platforms. The annotation DataFrame contains 
 several information about each CpG probe, and we used that information to 
@@ -156,6 +177,11 @@ TSS200 | TTTY14 | Island | chrY:21238448-21240005
 
 So this probe is associated to TTTY14 promoter in assocPromoters450k object 
 and to chrY:21238448-21240005 CpG Island in assocCGI450k object.
+
+* Annotation objects (**annot450K** and **annotEPIC**): They were both 
+constructed with `r Biocpkg("minfi")` package. A _RGChannelSet_ object was
+obtained for each platform and _getLocations()_ function 
+was applied to such objects.
 
 * bandTable: It was constructed with `r Biocpkg("Gviz")` package, concretely 
 with _IdeogramTrack()_ function.
