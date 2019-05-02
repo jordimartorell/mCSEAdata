@@ -1,7 +1,7 @@
 Package: mCSEAdata
 Type: Package
 Title: Data package for mCSEA package
-Version: 1.3.0
+Version: 1.4.0
 Author: Jordi Martorell Marugán
 Maintainer: Jordi Martorell Marugán <jmartorellm@gmail.com>
 Description: Data objects necessary to some mCSEA package functions.
