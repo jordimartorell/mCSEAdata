@@ -20,48 +20,7 @@ vignette: >
   %\VignetteIndexEntry{Data for mCSEA package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-references:
-- id: hansen2016a
-  title: "IlluminaHumanMethylation450kanno.ilmn12.hg19: Annotation for 
-Illumina's 450k methylation arrays"
-  author:
-  - family: Hansen
-    given: KD
-  container-title: R package version 0.6.0
-  issued:
-    year: 2016
-- id: hansen2016b
-  title: "IlluminaHumanMethylationEPICanno.ilm10b2.hg19: Annotation for 
-Illumina's EPIC methylation arrays"
-  author:
-  - family: Hansen
-    given: KD
-  container-title: R package version 0.6.0
-  issued:
-    year: 2016
-- id: aryee2014
-  title: "Minfi: A flexible and comprehensive Bioconductor package for the 
-analysis of Infinium DNA Methylation microarrays."
-  author:
-  - family: Aryee
-    given: MJ
-  - family: Jaffe
-    given: AE
-  - family: Corrada-Bravo
-    given: H
-  - family: Ladd-Acosta
-    given: C
-  - family: Feinberg
-    given: AP
-  - family: Hansen
-    given: KD
-  - family: Irizarry
-    given: RA
-  container-title: Bioinformatics
-  issued:
-    year: 2014
-  volume: 30
-  issue: 10
+
 
 ---
 
@@ -151,10 +110,10 @@ extracted from `r Biocpkg("leukemiaEset")` package.
     + **phenoTest** contains arbitrary phenotypes for each sample.
     
 * Association objects: They were all constructed from 
-`r Biocpkg("IlluminaHumanMethylation450kanno.ilmn12.hg19")` [@hansen2016a] and 
-`r Biocpkg("IlluminaHumanMethylationEPICanno.ilm10b2.hg19")` [@hansen2016b] 
+`r Biocpkg("IlluminaHumanMethylation450kanno.ilmn12.hg19")` and 
+`r Biocpkg("IlluminaHumanMethylationEPICanno.ilm10b2.hg19")` 
 packages annotation data. For that purpose, a _RGChannelSet_ object was
-obtained with `r Biocpkg("minfi")` [@aryee2014] package and 
+obtained with `r Biocpkg("minfi")` package and 
 _getAnnotation()_ function 
 was applied to such object in order to get the annotation DataFrame. That was 
 done for both 450k and EPIC platforms. The annotation DataFrame contains 
@@ -191,5 +150,3 @@ with _IdeogramTrack()_ function.
 ```{r sessionInfo, echo=FALSE}
 sessionInfo()
 ```
-
-# References
