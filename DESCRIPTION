@@ -1,12 +1,13 @@
 Package: mCSEAdata
 Type: Package
 Title: Data package for mCSEA package
-Version: 1.21.0
+Version: 1.21.1
 Author: Jordi Martorell Marugán
 Maintainer: Jordi Martorell Marugán <jmartorellm@gmail.com>
 Description: Data objects necessary to some mCSEA package functions.
     There are also example data objects to illustrate mCSEA package functionality.
 Depends: R (>= 3.5)
+Imports: GenomicRanges
 Suggests: BiocStyle, knitr, rmarkdown
 VignetteBuilder: knitr
 biocViews: Homo_sapiens_Data, MethylationArrayData, MicroarrayData, ExperimentData
