@@ -3,10 +3,10 @@ title: "Data for mCSEA package"
 author:
 - name: Jordi Martorell-Marugán
   affiliation:
-  - Bioinformatics Unit. GENYO, Centre for Genomics and Oncological Research
+  - Bioinformatics and Health Data Science. GENYO, Centre for Genomics and Oncological Research
 - name: Pedro Carmona-Sáez
   affiliation:
-  - Bioinformatics Unit. GENYO, Centre for Genomics and Oncological Research
+  - Bioinformatics and Health Data Science. GENYO, Centre for Genomics and Oncological Research
   email: pedro.carmona@genyo.es
 package: mCSEAdata
 date: "`r doc_date()`"
@@ -15,7 +15,7 @@ abstract: >
   _mCSEA_ package. It also contains example data used by _mCSEA_ to show it's 
   functionality.
 output:
-  BiocStyle::pdf_document
+  BiocStyle::html_document
 vignette: >
   %\VignetteIndexEntry{Data for mCSEA package}
   %\VignetteEngine{knitr::rmarkdown}
@@ -35,7 +35,7 @@ data(bandTable)
 Firstly, **betaTest**, **phenoTest** and **exprTest** are the objects necessary 
 to run the 
 examples in _mCSEA_ package. **betaTest** is a matrix with the beta-values 
-of 10000 EPIC probes for 20 samples. **exprTest** is a subset of 100 genes' 
+of 9241 EPIC probes for 20 samples. **exprTest** is a subset of 100 genes' 
 expression from bone marrows of 10 healthy and 10 leukemia patients. 
 **phenoTest** is a dataframe with the 
 explanatory variable and covariates associated to the samples.
