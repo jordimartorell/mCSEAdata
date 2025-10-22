@@ -8,3 +8,8 @@
     \item mCSEAdata release.
   }
 }
+\section{Version 1.29.1}{
+  \itemize{
+    \item Added support for EPICv2 platform.
+  }
+}

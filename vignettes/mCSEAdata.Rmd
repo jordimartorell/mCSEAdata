@@ -4,6 +4,10 @@ author:
 - name: Jordi Martorell-Marugán
   affiliation:
   - Bioinformatics and Health Data Science. GENYO, Centre for Genomics and Oncological Research
+- name: Raúl López-Domínguez
+  affiliation:
+  - Genomics Unit. GENYO, Centre for Genomics and Oncological Research
+  email: raul.lopez@genyo.es
 - name: Pedro Carmona-Sáez
   affiliation:
   - Bioinformatics and Health Data Science. GENYO, Centre for Genomics and Oncological Research
@@ -55,11 +59,11 @@ head(exprTest, 3)
 
 
 
-On the other hand, there are 6 association objects. Each one is a list of 
-features with their associated 450k or EPIC CpG probes. The features included 
-are promoters (**assocPromoters450k** and **assocPromotersEPIC**), gene bodies 
-(**assocGenes450k** and **assocGenesEPIC**) and CpG islands (**assocCGI450k** 
-and **assocCGIEPIC**). These objects are internally used by _mCSEA.test_ 
+On the other hand, there are 9 association objects. Each one is a list of 
+features with their associated 450k, EPIC and EPICv2 CpG probes. The features included 
+are promoters (**assocPromoters450k**, **assocPromotersEPIC** and **assocPromotersEPICv2**), gene bodies 
+(**assocGenes450k**, **assocGenesEPIC** and **assocGenesEPICv2**) and CpG islands (**assocCGI450k**,
+**assocCGIEPIC** and **assocCGIEPICv2**). These objects are internally used by _mCSEA.test_ 
 function in _mCSEA_ package.
 
 ```{r}
@@ -81,24 +85,36 @@ head(assocGenesEPIC, 3)
 class(assocCGIEPIC)
 length(assocCGIEPIC)
 head(assocCGIEPIC, 3)
+class(assocPromotersEPICv2)
+length(assocPromotersEPICv2)
+head(assocPromotersEPICv2, 3)
+class(assocGenesEPICv2)
+length(assocGenesEPICv2)
+head(assocGenesEPICv2, 3)
+class(assocCGIEPICv2)
+length(assocCGIEPICv2)
+head(assocCGIEPICv2, 3)
 ```
 
 
-There are also 2 GRanges objects with the locations of 450K and EPIC probes, 
+There are also 3 GRanges objects with the locations of 450K, EPIC and EPICv2 probes, 
 used by _mCSEAPlot()_ and _mCSEAIntegrate()_ functions:
 ```{r, message = FALSE}
 class(annot450K)
 head(annot450K, 3)
 class(annotEPIC)
 head(annotEPIC, 3)
+class(annotEPICv2)
+head(annotEPICv2, 3)
 ```
 
-Finally, **bandTable** object contains chromosomes band information and 
-centromer location. It is used by mCSEAPlot() function to plot the chromosome 
+Finally, **bandTable** object contains two objects with the information of chromosomes band information and 
+centromer location, one for each genome building: hg19 and hg38 It is used by mCSEAPlot() function to plot the chromosome 
 track.
 
 ```{r}
-head(bandTable)
+head(bandTablehg19)
+head(bandTablehg38)
 ```
 
 # Sources
@@ -109,22 +125,23 @@ extracted from `r Biocpkg("leukemiaEset")` package.
     + **phenoTest** contains arbitrary phenotypes for each sample.
     
 * Association objects: They were all constructed from 
-`r Biocpkg("IlluminaHumanMethylation450kanno.ilmn12.hg19")` and 
-`r Biocpkg("IlluminaHumanMethylationEPICanno.ilm10b2.hg19")` 
+`r Biocpkg("IlluminaHumanMethylation450kanno.ilmn12.hg19")`,  
+`r Biocpkg("IlluminaHumanMethylationEPICanno.ilm10b2.hg19")` and 
+`r Biocpkg("IlluminaHumanMethylationEPICv2anno.20a1.hg38")` 
 packages annotation data. For that purpose, a _RGChannelSet_ object was
 obtained with `r Biocpkg("minfi")` package and 
 _getAnnotation()_ function 
 was applied to such object in order to get the annotation DataFrame. That was 
-done for both 450k and EPIC platforms. The annotation DataFrame contains 
+done for both 450k, EPIC and EPICv2 platforms. The annotation DataFrame contains 
 several information about each CpG probe, and we used that information to 
 associate each probe to one or more promoter, gene body or CpG Island 
 following this scheme:
 
 Region type | mCSEAdata association objects | Column from association DataFrame used | Column values | Feature name column
 ----------- | ----------------------------- | -------------------------------------- | ------------- | -------------------
-Promoters | assocPromoters450k and assocPromotersEPIC | UCSC_RefGene_Group | TSS1500, TSS200, 5'UTR or 1stExon | UCSC_RefGene_Name
-Gene bodies | assocGenes450k and assocGenesEPIC | UCSC_RefGene_Group | Body | UCSC_RefGene_Name
-CpG Islands | assocCGI450k and assocCGIEPIC | Relation_to_Island | Island, N_Shore, S_Shore, N_Shelf or S_Shelf | Islands_Name
+Promoters | assocPromoters450k, assocPromotersEPIC and assocPromotersEPICv2 | UCSC_RefGene_Group | TSS1500, TSS200, 5'UTR, 1stExon or exon_1 | UCSC_RefGene_Name
+Gene bodies | assocGenes450k, assocGenesEPIC and assocGenesEPICv2 | UCSC_RefGene_Group | Body | UCSC_RefGene_Name
+CpG Islands | assocCGI450k, assocCGIEPIC and assocCGIEPICv2 | Relation_to_Island | Island, N_Shore, S_Shore, N_Shelf or S_Shelf | Islands_Name
 
 For instance, _cg00212031_ probe from 450k platform has the following 
 annotation data in the association DataFrame:
@@ -136,12 +153,12 @@ TSS200 | TTTY14 | Island | chrY:21238448-21240005
 So this probe is associated to TTTY14 promoter in assocPromoters450k object 
 and to chrY:21238448-21240005 CpG Island in assocCGI450k object.
 
-* Annotation objects (**annot450K** and **annotEPIC**): They were both 
+* Annotation objects (**annot450K**, **annotEPIC** and **annotEPICv2**): They were both 
 constructed with `r Biocpkg("minfi")` package. A _RGChannelSet_ object was
 obtained for each platform and _getLocations()_ function 
 was applied to such objects.
 
-* bandTable: It was constructed with `r Biocpkg("Gviz")` package, concretely 
+* bandTablehg19 and bandTablehg38: It was constructed with `r Biocpkg("Gviz")` package, concretely 
 with _IdeogramTrack()_ function.
 
 
