@@ -6,7 +6,7 @@
     Data and examples for mCSEA package
 }
 \description{
-    Association files between Illumina's 450K and EPIC microarrays
+    Association files between Illumina's 450K, EPIC and EPICv2 microarrays
     probes and promoters, CpG Islands and gene bodies. Annotation for the
     previous microarrays' probes. There are also
     sample data from EPIC platform and expression microarrays to test mCSEA 
@@ -14,6 +14,7 @@
 }
 \author{
 Jordi Martorell Marugán
+Raúl López Domínguez
 
 Maintainer: Jordi Martorell Marugán<jordi.martorell@genyo.es>
 }
@@ -24,3 +25,4 @@ data(bandTable)
 }
 
 \keyword{datasets}
+
