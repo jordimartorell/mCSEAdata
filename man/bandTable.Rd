@@ -1,5 +1,7 @@
 \name{bandTable}
 \alias{bandTable}
+\alias{bandTablehg19}
+\alias{bandTablehg38}
 \docType{data}
 \title{Human chromosomes information}
 \description{
@@ -8,7 +10,7 @@
 }
 \usage{data(bandTable)}
 \format{
-    data.frame
+    matrix (\code{bandTablehg19} and \code{bandTablehg38}), data.frame )
 }
 \source{
     Obtained with Gviz's IdeogramTrack() function.
